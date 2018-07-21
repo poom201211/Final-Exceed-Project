@@ -205,30 +205,10 @@ void loop() {
         server_data.level = getAndPrint("level");
         server_data.room = getAndPrint("room");
         server_data.check_empty = getAndPrint("check_empty");
-    // Serial.print("GET");
-    // GET(get_builder("buapalm-openair").c_str(), get_request,server_data.is_button_pressed);
-    // GET(get_builder("buapalm-is_button_pressed").c_str(), get_request,server_data.is_button_pressed);
-    // Serial.print("is_button_pressed : ");
-    // Serial.println(server_data.is_button_pressed);
-    // GET(get_builder("buapalm-light_lux").c_str(), get_request,server_data.light_lux);
-    // Serial.print("light_lux : ");
-    // Serial.println(server_data.light_lux);
-    // GET(get_builder("buapalm-door").c_str(), get_request,server_data.door);
-    // Serial.print("door : ");
-    // Serial.println(server_data.door);
-    // //float variable
-    // GET(get_builder("buapalm-temp").c_str(), get_request,server_data.temp); 
-    // Serial.print("temp : ");
-    // Serial.println(server_data.temp);
-    // GET(get_builder("buapalm-humi").c_str(), get_request,server_data.humi); 
-    // Serial.print("humi : ");
-    // Serial.println(server_data.humi);
-    // GET(get_builder("buapalm-sound").c_str(), get_request,server_data.sound); 
-    // Serial.print("sound : ");
-    // Serial.println(server_data.sound);
-    // GET("http://ecourse.cpe.ku.th:1515/api/exceed-plus/view/", get_request,server_data.plus); 
-    // Serial.print("plus : ");
-    // Serial.println(server_data.plus);
+
+        // GET(get_builder("buapalm-problem").c_str(), get_request,server_data.problem);
+        // Serial.print("GET << Problem : ");
+        // Serial.println(server_data.problem);
 
 
     last_sent_time = cur_time;
@@ -265,37 +245,6 @@ void loop() {
                     // Serial.print("POST >> Problem : ");
                     // Serial.println(problem);
                     // POST(set_builder("buapalm-problem", problem).c_str(), update_data_to_server_callback); 
-                    // float temp = project_data->temp;
-                    // int32_t light_lux = project_data->light_lux;
-                    // int32_t is_button_pressed = project_data->is_button_pressed;
-                    // float sound = project_data->sound;
-                    // int32_t door = project_data->door;
-                    // float humi = project_data->humi;
-                    // int32_t openair = project_data->openair; 
-                    // Serial.println("POSTTTTTTTTTTTTTTTTTTTTT");
-                    // Serial.print("Temp : ");
-                    // Serial.println(temp);
-                    // Serial.print("light_lux : ");
-                    // Serial.println(light_lux);
-                    // Serial.print("is_button_pressed : ");
-                    // Serial.println(is_button_pressed);
-                    // Serial.print("sound : ");
-                    // Serial.println(sound);
-                    // Serial.print("door : ");
-                    // Serial.println(door);
-                    // Serial.print("openair : ");
-                    // Serial.println(openair);
-                    // POST(set_builder("buapalm-humi", humi).c_str(), update_data_to_server_callback);
-                    // POST(set_builder("buapalm-temp", temp).c_str(), update_data_to_server_callback);
-//                    delay(100);
-//                    POST(set_builder("buapalm-light_lux", light_lux).c_str(), update_data_to_server_callback);
-                    // POST(set_builder("buapalm-is_button_pressed", is_button_pressed).c_str(), update_data_to_server_callback);
-                    // delay(100);
-                    // POST(set_builder("buapalm-sound", sound).c_str(), update_data_to_server_callback);
-                    // POST(set_builder("buapalm-door", door).c_str(), update_data_to_server_callback); 
-                    // POST(set_builder("buapalm-openair", openair).c_str(), update_data_to_server_callback); 
-                       
-                    // delay(100);
             }
             break;
           case GET_SERVER_DATA:
