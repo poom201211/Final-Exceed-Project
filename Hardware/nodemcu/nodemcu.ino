@@ -173,11 +173,13 @@ uint32_t getAndPrint(String var_get){
     Serial.println(tmp);
     return tmp;
 }
+
 unit32_t postAndPrint(uint32_t var_post){
     Serial.print("POST >> Problem : ");
     Serial.println(var_post);
     POST(set_builder("buapalm-" + (String)var_post, var_post).c_str(), update_data_to_server_callback) 
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void setup() {
   serial_initialization();
@@ -260,9 +262,9 @@ void loop() {
                     
                     postAndPrint(problem);
 
-                    Serial.print("POST >> Problem : ");
-                    Serial.println(problem);
-                    POST(set_builder("buapalm-problem", problem).c_str(), update_data_to_server_callback); 
+                    // Serial.print("POST >> Problem : ");
+                    // Serial.println(problem);
+                    // POST(set_builder("buapalm-problem", problem).c_str(), update_data_to_server_callback); 
                     // float temp = project_data->temp;
                     // int32_t light_lux = project_data->light_lux;
                     // int32_t is_button_pressed = project_data->is_button_pressed;
@@ -283,17 +285,17 @@ void loop() {
                     // Serial.println(door);
                     // Serial.print("openair : ");
                     // Serial.println(openair);
-                    POST(set_builder("buapalm-humi", humi).c_str(), update_data_to_server_callback);
-                    POST(set_builder("buapalm-temp", temp).c_str(), update_data_to_server_callback);
+                    // POST(set_builder("buapalm-humi", humi).c_str(), update_data_to_server_callback);
+                    // POST(set_builder("buapalm-temp", temp).c_str(), update_data_to_server_callback);
 //                    delay(100);
 //                    POST(set_builder("buapalm-light_lux", light_lux).c_str(), update_data_to_server_callback);
-                    POST(set_builder("buapalm-is_button_pressed", is_button_pressed).c_str(), update_data_to_server_callback);
+                    // POST(set_builder("buapalm-is_button_pressed", is_button_pressed).c_str(), update_data_to_server_callback);
                     // delay(100);
-                    POST(set_builder("buapalm-sound", sound).c_str(), update_data_to_server_callback);
-                    POST(set_builder("buapalm-door", door).c_str(), update_data_to_server_callback); 
-                    POST(set_builder("buapalm-openair", openair).c_str(), update_data_to_server_callback); 
+                    // POST(set_builder("buapalm-sound", sound).c_str(), update_data_to_server_callback);
+                    // POST(set_builder("buapalm-door", door).c_str(), update_data_to_server_callback); 
+                    // POST(set_builder("buapalm-openair", openair).c_str(), update_data_to_server_callback); 
                        
-                    delay(100);
+                    // delay(100);
             }
             break;
           case GET_SERVER_DATA:
