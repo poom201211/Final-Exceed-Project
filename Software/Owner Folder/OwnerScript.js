@@ -19,13 +19,15 @@ let getWeb = (type) => {
         url: `http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-${type}/view`,
         dataType: "text",
         success: function (response) {
-           // console.log(response + type)
             if (type === 'problem') {
+                if (response === '0'){
+                    problem = 0
+                }
                 if (response === '1') {
                     problem = 'tissue'
-                } else if (response === '2') {
-                    problem = clog
-                } else if (response === '3') {
+                }if (response === '2') {
+                    problem = 'clog'
+                }if (response === '3') {
                     problem = 'light'
                 }
             } else if (type === 'level') {
@@ -84,7 +86,6 @@ let getAll = () => {
     getWeb(type4)
     getWeb(type5)
 
-
     sendTo()
 }
 
@@ -96,21 +97,21 @@ let sendTo = () => {
     if (problem === 'tissue') {
         $(`#1row${level}_${room}`).html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <h4>level: ${level} room: ${room}</h4>
-        <button type="button" id="close-button1" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" id="close-button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
         </div>`)
     } else if (problem === 'clog') {
         $(`#2row${level}_${room}`).html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <h4>level: ${level} room: ${room}</h4>
-        <button type="button" id="close-button2" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" id="close-button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
         </div>`)
     } else if (problem === 'light') {
         $(`#3row${level}_${room}`).html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <h4>level: ${level} room: ${room}</h4>
-        <button type="button" id="close-button3" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" id="close-button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
         </div>`)
@@ -136,7 +137,53 @@ let setup = () => {
 
     sosRoom = 0
 
-    $('#')
+    $('#colse-button').on('click', function(){
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set?value=",
+            data: {
+                value: 0
+            },
+            dataType: "json",
+            success: function (response) {
+                
+            }
+        });
+    })
+
+    problem = 0
+
+    // $('#colse-button2').on('click', function(){
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set?value=",
+    //         data: {
+    //             value: 0
+    //         },
+    //         dataType: "json",
+    //         success: function (response) {
+                
+    //         }
+    //     });
+    // })
+
+    // problem = 0
+
+    // $('#colse-button3').on('click', function(){
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set?value=",
+    //         data: {
+    //             value: 0
+    //         },
+    //         dataType: "json",
+    //         success: function (response) {
+                
+    //         }
+    //     });
+    // })
+
+    // problem = 0
 }
 
 let init = () => {
