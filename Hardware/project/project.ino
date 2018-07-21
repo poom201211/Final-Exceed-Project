@@ -5,37 +5,38 @@
 #define BUZZER 5
 #define LED_1 2
 #define LED_2 3
+#define LED_3 6
 #define LDR 17
+
 int count = 0;
 int lastcolor = 0; //no color readed
 int buttonState, lastState, state = 0, led_state = 0;
+
 
 SoftwareSerial se_read(12, 13); // write only
 SoftwareSerial se_write(10, 11); // read only
 
 struct ProjectData {
-  uint32_t problem;
-  uint32_t level;
-  uint32_t room;
-  //  uint32_t timing;
-  //  uint32_t check_empty;
-  uint32_t sos_level;
-  uint32_t sos_room;
+  int32_t problem;
+  int32_t level;
+  int32_t room;
+  int32_t sos_level;
+  int32_t sos_room;
 } project_data = {0, 2, 1, 0, 0};
 
 struct ServerData {
-  uint32_t problem;
-  uint32_t level;
-  uint32_t room;
-  //  uint32_t timing;
-  //  uint32_t check_empty;
-  uint32_t sos_level;
-  uint32_t sos_room;
+  int32_t problem;
+  int32_t level;
+  int32_t room;
+  int32_t sos_level;
+  int32_t sos_room;
 } server_data = {0, 2, 1, 0, 0};
 
 const char GET_SERVER_DATA = 1;
 const char GET_SERVER_DATA_RESULT = 2;
 const char UPDATE_PROJECT_DATA = 3;
+
+ProjectData last_value = {0, 2, 1, 0, 0};
 
 void send_to_nodemcu(char code, void *data, char data_size) {
   char *b = (char*)data;
@@ -89,15 +90,45 @@ int reflector(int color) {
     }
     lastcolor = 2;
   }
-  if (count >= 4) {
-    //Serial.println("collect!! : ");
-    //Serialprint(lastcolor);
+  if (count >= 5) {
+//    Serial.println("collect!! : ");
+//    Serial.print(lastcolor);
+    if(lastcolor != 0 ){
+    digitalWrite(LED_3, HIGH); }
     return (lastcolor);
   }
-  //  else {
-  //    Serial.print(lastcolor);
-  //  }
+  else {
+    Serial.print(lastcolor);
+    digitalWrite(LED_3, LOW);
+  }
 }
+
+int checkUpdate(){
+
+  if(last_value.problem != project_data.problem){
+    last_value.problem = project_data.problem;
+    return 1;
+  }
+  if(last_value.level != project_data.level){
+     last_value.level = project_data.level;
+     return 1;
+  };
+  if(last_value.room != project_data.room){
+     last_value.room = project_data.room;
+     return 1;
+  };
+  if(last_value.sos_level != project_data.sos_level){
+    last_value.sos_level = project_data.sos_level;
+    return 1;
+  }
+  if(last_value.sos_room != project_data.sos_room){
+    last_value.sos_room = project_data.sos_room;
+    return 1;
+  }
+  return 0;
+}
+
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
@@ -109,6 +140,7 @@ void setup() {
   pinMode(BUZZER, OUTPUT);
   pinMode(LED_1, OUTPUT);
   pinMode(LED_2, OUTPUT);
+  pinMode(LED_3, OUTPUT);
   pinMode(LDR, INPUT);
   while (!se_read.isListening()) {
     se_read.listen();
@@ -131,6 +163,7 @@ void loop() {
   //send to nodemcu
   int color_1 = analogRead(REFLECT_1);
   project_data.problem = reflector(color_1);
+  delay(1000);
   //  project_data.check_empty = digitalRead(DOOR_1);
 
   buttonState = digitalRead(SWITCH);
@@ -150,7 +183,7 @@ void loop() {
   lastState = buttonState;
 
   if (state) {
-    if (cur_time - last_sent > 700) {//sos
+    if (cur_time - last_sent > 500) {//sos
       digitalWrite(LED_1, (led_state) ? HIGH : LOW);
       led_state = !led_state;
       last_sent = cur_time;
@@ -172,8 +205,9 @@ void loop() {
   //{
   //digitalWrite(LED_1, LOW);
   //}
+
   if (cur_time - last_sent_time > 500) {//always update
-    send_to_nodemcu(UPDATE_PROJECT_DATA, &project_data, sizeof(ProjectData));
+    if(checkUpdate()) send_to_nodemcu(UPDATE_PROJECT_DATA, &project_data, sizeof(ProjectData));
     send_to_nodemcu(GET_SERVER_DATA, &server_data, sizeof(ServerData));
     last_sent_time = cur_time;
   }
@@ -201,11 +235,8 @@ void loop() {
           case GET_SERVER_DATA_RESULT: {
               ServerData *data = (ServerData*)buffer;
               //use data to control sensor
-              Serial.print("color we get: ");
-              Serial.println(data->problem);
-              if (data->problem == 0) {
-                digitalWrite(LED_1, LOW);
-              }
+              //              Serial.print("color we get: ");
+              //              Serial.println(data->problem);
             } break;
         }
         cur_buffer_length = -1;
