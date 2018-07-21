@@ -238,9 +238,20 @@ void loop() {
               ProjectData *project_data = (ProjectData*)buffer;
               //depend on what your data is int32_t var = project_data->var;
               //POST(...)
+                  // uint32_t problem;
+                  // uint32_t level;
+                  // uint32_t room;
+                  // unit32_t timing;
+                  // uint32_t check_empty;
                     uint32_t problem  = project_data->problem;
+                    uint32_t level  = project_data->level;
+                    uint32_t room  = project_data->room;
+                    uint32_t check_empty  = project_data->check_empty;
                     
                     postAndPrint(problem);
+                    postAndPrint(level);
+                    postAndPrint(room);
+                    postAndPrint(check_empty);
 
                     // Serial.print("POST >> Problem : ");
                     // Serial.println(problem);
