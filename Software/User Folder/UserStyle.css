@@ -1,0 +1,48 @@
+.border{
+    border: 250px solid black;
+}
+
+.color{
+    color: white;
+}
+
+.background{
+    background-color:#44c795;
+}
+
+.backImage{
+    background-image: url(http://backgroundcheckall.com/wp-content/uploads/2017/12/chill-background-8.jpg);
+    height: auto;
+    width: auto;
+}
+
+.autoSize{
+    height: 100%;
+    width: 100%;
+
+}
+
+.backColor{
+    background-color: white;
+}
+
+.setBackWhiteWithHeight{
+    background-color: white;
+    height: 500px;
+}
+
+.setFirstHalf{
+    width: 1300px;
+}
+
+.setFrontHalf{
+    height: 359.5px;
+}
+
+.setEachSide{
+    width: 266px;
+}
+
+.setLastHeight{
+    height: 100px;
+}
