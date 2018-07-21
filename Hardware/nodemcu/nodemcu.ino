@@ -7,11 +7,11 @@ SoftwareSerial se_read(D5, D6); // write only
 SoftwareSerial se_write(D0, D1); // read only
 
 struct ProjectData {
-    uint32_t problem;
-    uint32_t level;
-    uint32_t room;
-    uint32_t sos_level;
-    uint32_t sos_room;
+    int32_t problem;
+    int32_t level;
+    int32_t room;
+    int32_t sos_level; 
+    int32_t sos_room;
     // unit32_t timing;
     // uint32_t check_empty;
 
@@ -19,11 +19,11 @@ struct ProjectData {
 } project_data = {0,2,1,0,0};
 
 struct ServerData {
-    uint32_t problem;
-    uint32_t level;
-    uint32_t room;
-    uint32_t sos_level;
-    uint32_t sos_room;
+    int32_t problem;
+    int32_t level;
+    int32_t room;
+    int32_t sos_level;
+    int32_t sos_room;
     // unit32_t timing;
     // uint32_t check_empty;
    
@@ -213,10 +213,10 @@ void loop() {
         // server_data.level = getAndPrint("level");
         // server_data.room = getAndPrint("room");
         // server_data.check_empty = getAndPrint("check_empty");
-
-        GET(get_builder("buapalm-problem").c_str(), get_request,server_data.problem);
-        Serial.print("GET << problem : ");
-        Serial.println(server_data.problem);
+//
+//        GET(get_builder("buapalm-problem").c_str(), get_request,server_data.problem);
+//        Serial.print("GET << problem : ");
+//        Serial.println(server_data.problem);
 
         // GET(get_builder("buapalm-level").c_str(), get_request,server_data.level);
         // Serial.print("GET << level : ");
@@ -262,10 +262,12 @@ void loop() {
                   // uint32_t room;
                   // unit32_t timing;
                   // uint32_t check_empty;
-                    uint32_t problem  = project_data->problem;
-                    uint32_t level  = project_data->level;
-                    uint32_t room  = project_data->room;
-                    uint32_t check_empty  = project_data->check_empty;
+                    int32_t problem  = project_data->problem;
+                    int32_t level  = project_data->level;
+                    int32_t room  = project_data->room;
+                    int32_t sos_level = project_data->sos_level;
+                    int32_t sos_room = project_data->sos_room;
+//                    int32_t check_empty  = project_data->check_empty;
 
                     // postAndPrint(problem);
                     // postAndPrint(level);
