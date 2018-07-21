@@ -32,7 +32,9 @@
 }
 
 .setFirstHalf{
-    width: 1300px;
+    /* width: 1300px; */
+    width: 100%;
+    min-width: 500px;
 }
 
 .setFrontHalf{
