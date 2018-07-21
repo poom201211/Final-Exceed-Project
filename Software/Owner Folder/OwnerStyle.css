@@ -3,22 +3,75 @@
     margin: auto;
 }
 
+.titlefont{
+    font-family: fantasy;
+}
+
+.button-color{
+    color: black;
+    background-color: rgb(76, 166, 189);
+}
+
 .titleBackground{
-   background-color: rgb(84, 250, 153);
+   /* background-color: rgb(84, 250, 153); */
+   -webkit-animation-name: titleanimation;
+   -webkit-animation-duration: 5s;
+   -webkit-animation-iteration-count: infinite;
+   animation-name: titleanimation;
+   animation-duration: 4s;
+   animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes titleanimation{
+    0%   {background-color:rgb(61, 253, 2);}
+    25%  {background-color:rgb(71, 233, 66);}
+    50%  {background-color:rgb(0, 217, 255);}
+    75%  {background-color:green;}
+    100% {background-color:rgba(61, 253, 2);}
+}
+
+@keyframes titleanimation{
+    0%   {background-color:rgb(61, 253, 2);}
+    25%  {background-color:rgb(71, 233, 66);}
+    50%  {background-color:rgb(0, 217, 255);}
+    75%  {background-color:green;}
+    100% {background-color:rgba(61, 253, 2);}
+}
+
+.alert-color{
+    border: 10px solid white;
+}
+
+.row-color1{
+    background-color: rgb(187, 240, 187);
+}
+
+.row-color2{
+    background-color: rgb(141, 206, 141);
 }
 
 .body-background{
-    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    background-image: url(https://i.pinimg.com/originals/fa/f8/a2/faf8a2f73b982e6dd33d23404802be3a.jpg);
 }
 
 .font{
     font-size: 60px;
     color: white;
 }
+.sos-font{
+    font-size: 40px;
+    color: white;
+    font-family: fantasy;
+}
 
 .picture{
-   width: 200px;
+   width: 230px;
    height: 250px;
+}
+
+.sos{
+    widows: 200px;
+    height: 180px;
 }
 
 .body-border{
@@ -43,4 +96,8 @@
 
 ::-webkit-scrollbar-thumb:hover{
     background: #17d440;
+}
+
+.setTextColor{
+    color: white;
 }
