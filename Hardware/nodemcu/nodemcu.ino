@@ -30,8 +30,8 @@ const char GET_SERVER_DATA_RESULT = 2;
 const char UPDATE_PROJECT_DATA = 3;
 
 // wifi configuration
-const char SSID[] = "CHUT";
-const char PASSWORD[] = "*123*abc";
+const char SSID[] = "EXCEED_RIGHT_1_2.4GHz"; //CHUT
+const char PASSWORD[] = "1234567890"; //*123*abc
 
 // for nodemcu communication
 uint32_t last_sent_time = 0;
