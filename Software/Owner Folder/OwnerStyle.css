@@ -5,8 +5,10 @@
 
 .titleBackground{
    background-color: rgb(84, 250, 153);
-   
-   
+}
+
+.body-background{
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 }
 
 .font{
@@ -15,18 +17,14 @@
 }
 
 .picture{
-   width: 250px;
+   width: 200px;
    height: 250px;
 }
 
 .body-border{
-    outline: 5px dotted rgb(26, 26, 26);
+    outline: 5px solid rgb(7, 129, 38);
     max-height: 250px;
     overflow-y: scroll;
-}
-
-.body-background{
-    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 }
 
 ::-webkit-scrollbar{
