@@ -168,13 +168,14 @@ void get_request_raw_callback(String const &str) {
 
 uint32_t getAndPrint(String var_get){
     uint32_t tmp;
-    GET(get_builder("buapalm-" + var_get).c_str(), get_request, tmp); // tmp = GET
+    String txt_buildpar = "buapalm" + var_get;
+    GET(get_builder(&txt_buildpar).c_str(), get_request, tmp); // tmp = GET
     Serial.print("GET <<  " + var_get + " : ");
     Serial.println(tmp);
     return tmp;
 }
 
-unit32_t postAndPrint(uint32_t var_post){
+uint32_t postAndPrint(uint32_t var_post){
     Serial.print("POST >> Problem : ");
     Serial.println(var_post);
     POST(set_builder("buapalm-" + (String)var_post, var_post).c_str(), update_data_to_server_callback) 
@@ -201,15 +202,27 @@ void loop() {
     // uint32_t room;
     // unit32_t timing;
     // uint32_t check_empty;
-        server_data.problem = getAndPrint("problem");
-        server_data.level = getAndPrint("level");
-        server_data.room = getAndPrint("room");
-        server_data.check_empty = getAndPrint("check_empty");
 
-        // GET(get_builder("buapalm-problem").c_str(), get_request,server_data.problem);
-        // Serial.print("GET << Problem : ");
-        // Serial.println(server_data.problem);
+        // server_data.problem = getAndPrint("problem");
+        // server_data.level = getAndPrint("level");
+        // server_data.room = getAndPrint("room");
+        // server_data.check_empty = getAndPrint("check_empty");
 
+        GET(get_builder("buapalm-problem").c_str(), get_request,server_data.problem);
+        Serial.print("GET << problem : ");
+        Serial.println(server_data.problem);
+
+        GET(get_builder("buapalm-level").c_str(), get_request,server_data.level);
+        Serial.print("GET << level : ");
+        Serial.println(server_data.level);
+
+        GET(get_builder("buapalm-room").c_str(), get_request,server_data.room);
+        Serial.print("GET << room : ");
+        Serial.println(server_data.room);
+
+        GET(get_builder("buapalm-check_empty").c_str(), get_request,server_data.check_empty);
+        Serial.print("GET << check_empty : ");
+        Serial.println(server_data.check_empty);
 
     last_sent_time = cur_time;
   }
@@ -247,15 +260,28 @@ void loop() {
                     uint32_t level  = project_data->level;
                     uint32_t room  = project_data->room;
                     uint32_t check_empty  = project_data->check_empty;
-                    
-                    postAndPrint(problem);
-                    postAndPrint(level);
-                    postAndPrint(room);
-                    postAndPrint(check_empty);
 
-                    // Serial.print("POST >> Problem : ");
-                    // Serial.println(problem);
-                    // POST(set_builder("buapalm-problem", problem).c_str(), update_data_to_server_callback); 
+                    // postAndPrint(problem);
+                    // postAndPrint(level);
+                    // postAndPrint(room);
+                    // postAndPrint(check_empty);
+
+                    Serial.print("POST >> problem : ");
+                    Serial.println(problem);
+                    POST(set_builder("buapalm-problem", problem).c_str(), update_data_to_server_callback); 
+
+                    Serial.print("POST >> level : ");
+                    Serial.println(level);
+                    POST(set_builder("buapalm-level", level).c_str(), update_data_to_server_callback); 
+
+                    Serial.print("POST >> room : ");
+                    Serial.println(room);
+                    POST(set_builder("buapalm-room", room).c_str(), update_data_to_server_callback); 
+
+                    Serial.print("POST >> check_empty : ");
+                    Serial.println(check_empty);
+                    POST(set_builder("buapalm-check_empty", check_empty).c_str(), update_data_to_server_callback); 
+
             }
             break;
           case GET_SERVER_DATA:
