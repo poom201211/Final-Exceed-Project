@@ -20,14 +20,14 @@ let getWeb = (type) => {
         dataType: "text",
         success: function (response) {
             if (type === 'problem') {
-                if (response === '0'){
+                if (response === '0') {
                     problem = 0
                 }
                 if (response === '1') {
                     problem = 'tissue'
-                }if (response === '2') {
+                } if (response === '2') {
                     problem = 'clog'
-                }if (response === '3') {
+                } if (response === '3') {
                     problem = 'light'
                 }
             } else if (type === 'level') {
@@ -47,13 +47,13 @@ let getWeb = (type) => {
                     room = 4
                 }
             } else if (type === 'sos_room') {
-                if(response === '0') {
+                if (response === '0') {
                     sosRoom = 0
                 }
                 if (response === '1') {
                     sosRoom = 1
                     callSOS()
-                } 
+                }
                 if (response === '2') {
                     sosRoom = 2
                 }
@@ -95,26 +95,14 @@ let callSOS = () => {
 
 let sendTo = () => {
     if (problem === 'tissue') {
-        $(`#1row${level}_${room}`).html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <h4>level: ${level} room: ${room}</h4>
-        <button type="button" id="close-button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>`)
+        console.log("h1")
+        $(`#1row${level}_${room}`).html(`level:${level} room:${room}`)
     } else if (problem === 'clog') {
-        $(`#2row${level}_${room}`).html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <h4>level: ${level} room: ${room}</h4>
-        <button type="button" id="close-button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>`)
+        console.log("h2")
+        $(`#2row${level}_${room}`).html(`level:${level} room:${room}`)
     } else if (problem === 'light') {
-        $(`#3row${level}_${room}`).html(`<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <h4>level: ${level} room: ${room}</h4>
-        <button type="button" id="close-button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>`)
+        console.log("h3")
+        $(`#3row${level}_${room}`).html(`level:${level} room:${room}`)
     }
 
 }
@@ -124,66 +112,427 @@ let setup = () => {
         $('#SOS').html(`<div>No Signal</div>`)
         $.ajax({
             type: "POST",
-            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-sos_room/set?value=",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-sos_room/set",
             data: {
                 value: 0
             },
-            dataType: "json",
+            dataType: "text",
             success: function (response) {
-                
+
             }
         });
     })
 
     sosRoom = 0
 
-    $('#colse-button').on('click', function(){
+    $('#1row1_1').on('click', function () {
+        $('#1row1_1').html(``)
         $.ajax({
             type: "POST",
-            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set?value=",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
             data: {
-                value: 0
+                value: "0"
             },
-            dataType: "json",
+            dataType: "text",
             success: function (response) {
-                
+                console.log(12345)
             }
         });
     })
 
     problem = 0
 
-    // $('#colse-button2').on('click', function(){
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set?value=",
-    //         data: {
-    //             value: 0
-    //         },
-    //         dataType: "json",
-    //         success: function (response) {
-                
-    //         }
-    //     });
-    // })
+    $('#1row1_2').on('click', function () {
+        $('#1row1_2').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
 
-    // problem = 0
+    problem = 0
 
-    // $('#colse-button3').on('click', function(){
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set?value=",
-    //         data: {
-    //             value: 0
-    //         },
-    //         dataType: "json",
-    //         success: function (response) {
-                
-    //         }
-    //     });
-    // })
+    $('#1row1_3').on('click', function () {
+        $('#1row1_3').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
 
-    // problem = 0
+    problem = 0
+
+    $('#1row1_4').on('click', function () {
+        $('#1row1_4').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#1row2_1').on('click', function () {
+        $('#1row2_1').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#1row2_2').on('click', function () {
+        $('#1row2_2').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#1row2_3').on('click', function () {
+        $('#1row2_3').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#1row2_4').on('click', function () {
+        $('#1row2_4').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row1_1').on('click', function () {
+        $('#2row1_1').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row1_2').on('click', function () {
+        $('#2row1_2').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row1_3').on('click', function () {
+        $('#2row1_3').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row1_4').on('click', function () {
+        $('#2row1_4').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row2_1').on('click', function () {
+        $('#2row2_1').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row2_2').on('click', function () {
+        $('#2row2_2').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row2_3').on('click', function () {
+        $('#2row2_3').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#2row2_4').on('click', function () {
+        $('#2row2_4').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row1_1').on('click', function () {
+        $('#3row1_1').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row1_2').on('click', function () {
+        $('#3row1_2').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row1_3').on('click', function () {
+        $('#3row1_3').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row1_4').on('click', function () {
+        $('#3row1_4').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row2_1').on('click', function () {
+        $('#3row2_1').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row2_2').on('click', function () {
+        $('#3row2_2').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row2_3').on('click', function () {
+        $('#3row2_3').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
+    $('#3row2_4').on('click', function () {
+        $('#3row2_4').html(``)
+        $.ajax({
+            type: "POST",
+            url: "http://ecourse.cpe.ku.ac.th/exceed/api/buapalm-problem/set",
+            data: {
+                value: "0"
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(12345)
+            }
+        });
+    })
+
+    problem = 0
+
 }
 
 let init = () => {

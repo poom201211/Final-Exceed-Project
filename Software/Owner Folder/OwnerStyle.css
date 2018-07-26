@@ -7,6 +7,11 @@
     font-family: fantasy;
 }
 
+.font-problem{
+    color: brown;
+    font-size: 40px;
+}
+
 .button-color{
     color: black;
     background-color: rgb(76, 166, 189);
@@ -52,6 +57,15 @@
 
 .body-background{
     background-image: url(https://i.pinimg.com/originals/fa/f8/a2/faf8a2f73b982e6dd33d23404802be3a.jpg);
+}
+
+.buttonsize{
+    width: 300px;
+    height: 50px;
+    background-color: rgb(88, 240, 134);
+    font-family: fantasy;
+    font-size: 20px;
+    color: rgb(92, 68, 68);
 }
 
 .font{
